@@ -1,0 +1,45 @@
+<h1 class ="c1"> {{title}}</h1>
+
+
+<div *ngIf="success_msg; then updated_msg; else error_msg" class="bg-success"     >
+    User Added !!!
+</div>
+
+
+
+<ng-template #updated_msg >
+    <div class="bg-danger" >user was updated !!!!  </div>
+</ng-template>
+
+<ng-template #error_msg >
+    <div class="bg-danger" >user was not added !!!!  </div>
+</ng-template>
+
+
+
+<h2> Learning ngFor</h2>
+<ul>
+    <li *ngFor="let contact of contacts; index as i; first as f; last as l">
+        <div *ngIf="f" >This is the fist record</div>
+        <div >
+           {{i}}- {{contact.lastname}} -  {{contact.firstname}} :  {{contact.contactId}}
+        </div>
+        <div *ngIf="l" >This is the last record</div>
+    </li>
+</ul>
+<br/>
+<ul>
+    <li *ngFor="let contact of contacts; even as e ; odd as o ">
+    
+        <div *ngIf="o" style="background-color:darkseagreen;">
+            {{contact.lastname}} -  {{contact.firstname}} :  {{contact.contactId}}
+        </div>
+        <div  *ngIf="e" style="background-color:lightyellow;">
+            {{contact.lastname}} -  {{contact.firstname}} :  {{contact.contactId}}
+         </div>
+   
+    </li>
+</ul>
+
+
+<router-outlet></router-outlet>
